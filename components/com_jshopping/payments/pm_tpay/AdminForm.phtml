@@ -1,0 +1,73 @@
+<div class="col100">
+    <fieldset class="adminform">
+        <table class="admintable" width="100%">
+            <tr>
+                <td class="key">
+                    Identyfikator sprzedawcy tpay.com
+                </td>
+                <td>
+                    <input type="text" class="inputbox" name="pm_params[seller_id]" size="45"
+                           value="<?php echo $params['seller_id'] ?>"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="key">
+                    Kod bezpieczeństwa
+                </td>
+                <td>
+                    <input type="text" class="inputbox" name="pm_params[seller_secret]" size="45"
+                           value="<?php echo $params['seller_secret'] ?>"/>
+                    <?php echo " " . JHTML::tooltip('Kod znajdujący się w panelu odbiorcy płatności, w zakładce ustawienia->powiadomienia->bezpieczeństwo'); ?>
+                </td>
+            </tr>
+            <tr>
+                <td class="key">
+                    <?php echo _JSHOP_TRANSACTION_END; ?>
+                </td>
+                <td>
+                    <?php
+                    print JHTML::_('select.genericlist', $orders->getAllOrderStatus(),
+                        'pm_params[transaction_end_status]', 'class = "inputbox" size = "1"', 'status_id', 'name',
+                        $params['transaction_end_status']);
+                    ?>
+                </td>
+            </tr>
+            <tr>
+                <td class="key">
+                    <?php echo _JSHOP_TRANSACTION_PENDING; ?>
+                </td>
+                <td>
+                    <?php
+                    echo JHTML::_('select.genericlist', $orders->getAllOrderStatus(),
+                        'pm_params[transaction_pending_status]', 'class = "inputbox" size = "1"', 'status_id', 'name',
+                        $params['transaction_pending_status']);
+                    ?>
+                </td>
+            </tr>
+            <tr>
+                <td class="key">
+                    <?php echo _JSHOP_TRANSACTION_FAILED; ?>
+                </td>
+                <td>
+                    <?php
+                    echo JHTML::_('select.genericlist', $orders->getAllOrderStatus(),
+                        'pm_params[transaction_failed_status]', 'class = "inputbox" size = "1"', 'status_id', 'name',
+                        $params['transaction_failed_status']);
+                    ?>
+                </td>
+            </tr>
+            <tr>
+                <td class="key">
+                    Serwer korzysta z proxy
+                </td>
+                <td>
+                    <?php
+                    print JHTML::_('select.booleanlist', 'pm_params[proxy]', 'class = "inputbox"',
+                        $params['proxy']);
+                    ?>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+</div>
+<div class="clr"></div>
